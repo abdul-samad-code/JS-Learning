@@ -1,3 +1,102 @@
 //********************* code execution in js *********************************
 
+Step 1: JavaScript runs inside an environment
+
+JavaScript does not run by itself — it needs an environment to execute, such as:
+
+ Browser (like Chrome, Edge, Firefox) → using the JavaScript Engine inside it.
+
+ Node.js → runs JavaScript outside browsers (for backend apps).
+
+Example engines:
+
+Chrome → V8
+
+Firefox → SpiderMonkey
+
+Edge → Chakra
+
+ Step 2: JavaScript Engine Components
+
+A JavaScript engine (like V8) mainly has two parts:
+
+Memory Heap
+
+Where variables and objects are stored in memory.
+
+Example:
+
+let name = "Samad"; // stored in memory heap
+
+
+Call Stack
+
+Where the code executes line by line.
+
+Each function call is pushed to the stack when called, and popped out when finished.
+
+🧩 Step 3: Code Execution Process
+
+Let’s say you write this:
+
+function greet() {
+  console.log("Hello Samad");
+}
+greet();
+
+
+Execution steps:
+
+Global Execution Context (GEC) is created.
+
+The engine creates this context automatically before running any code.
+
+It has two phases:
+
+Creation Phase:
+All variables and functions are stored in memory.
+(Functions are stored fully; variables are assigned undefined.)
+
+Execution Phase:
+Code runs line by line.
+
+The greet() function is called → a new Execution Context is created for it.
+
+It’s pushed onto the Call Stack.
+
+Inside it, console.log("Hello Samad") runs.
+
+When the function finishes → its context is popped out from the Call Stack.
+
+When all code finishes, the Call Stack becomes empty again.
+
+ Step 4: Event Loop (for async code)
+
+If there’s something like:
+
+console.log("Start");
+setTimeout(() => console.log("Hello after 2s"), 2000);
+console.log("End");
+
+
+Execution:
+
+“Start” → printed immediately.
+
+setTimeout() → sent to the Web APIs (browser handles it separately).
+
+“End” → printed.
+
+After 2 seconds, the callback goes into the Callback Queue.
+
+The Event Loop checks if the Call Stack is empty → then moves the callback to the stack → “Hello after 2s” prints.
+
+ Summary
+Concept	Description
+Memory Heap	Stores variables & objects
+Call Stack	Executes code line-by-line
+Execution Context	Environment where code runs (Global or Function level)
+Event Loop	Manages async operations
+Web APIs / Callback Queue	Handle things like setTimeout, fetch, DOM events
+
 
