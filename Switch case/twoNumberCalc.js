@@ -14,5 +14,7 @@ switch (op){
         break;
     case "/":
         console.log("Result : ",a/b);
-        break;  
+        break; 
+    default:
+        console.log("You chose Other operator");  
 }
